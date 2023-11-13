@@ -14,7 +14,6 @@ GHIBLI_DOMAIN = 'https://ghibli.rest'
 @permission_classes([HasAPIKey | IsAuthenticated])
 def list_movies(request):
     # get movie list from cache
-    print(request.headers)
     movies = cache.get('movies_list')
     if movies is None:
         result = requests.get(f'{GHIBLI_DOMAIN}/films')
